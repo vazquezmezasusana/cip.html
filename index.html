@@ -3,79 +3,77 @@
 <head>
   <meta charset="UTF-8">
   <title>CIP | Product Intelligence Center</title>
-
   <style>
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background: #f4f6f9;
-    }
-
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: 'Segoe UI', sans-serif; background: #f4f6f9; }
     header {
       background: linear-gradient(90deg, #0b1f3a, #1f3c88);
-      color: white;
-      padding: 30px;
-      text-align: center;
+      color: white; padding: 30px; text-align: center;
     }
-
-    header h1 {
-      margin: 0;
-      font-size: 28px;
-    }
-
-    header p {
-      margin-top: 10px;
-      opacity: 0.9;
-    }
-
-    .container {
-      padding: 30px;
-    }
-
+    header h1 { margin: 0; font-size: 28px; }
+    header p { margin-top: 10px; opacity: 0.9; }
+    .container { padding: 30px; }
     .card {
-      background: white;
-      padding: 25px;
-      border-radius: 12px;
-      margin-bottom: 25px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      background: white; padding: 25px; border-radius: 12px;
+      margin-bottom: 25px; box-shadow: 0 4px 12px rgba(0,0,0,0.08);
     }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-    }
-
-    .card h3 {
-      margin-top: 0;
-    }
-
+    .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .card h3 { margin-top: 0; }
     .btn {
-      background: #0b1f3a;
-      color: white;
-      padding: 14px 22px;
-      border: none;
-      border-radius: 8px;
-      font-size: 16px;
-      cursor: pointer;
-      margin-top: 15px;
+      background: #0b1f3a; color: white; padding: 14px 22px;
+      border: none; border-radius: 8px; font-size: 16px; cursor: pointer; margin-top: 15px;
     }
-
-    .btn:hover {
-      background: #1f3c88;
+    .btn:hover { background: #1f3c88; }
+    .center { text-align: center; }
+    ul { line-height: 1.8; }
+    #chat-overlay {
+      display: none; position: fixed; inset: 0;
+      background: rgba(0,0,0,0.5); z-index: 1000;
+      justify-content: center; align-items: center;
     }
-
-    .center {
-      text-align: center;
+    #chat-overlay.active { display: flex; }
+    #chat-box {
+      background: white; width: 90%; max-width: 750px; height: 80vh;
+      border-radius: 16px; display: flex; flex-direction: column;
+      overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.3);
     }
-
-    ul {
-      line-height: 1.8;
+    #chat-header {
+      background: linear-gradient(90deg, #0b1f3a, #1f3c88);
+      color: white; padding: 18px 22px;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    #chat-header h3 { margin: 0; font-size: 18px; }
+    #chat-close { background: none; border: none; color: white; font-size: 24px; cursor: pointer; }
+    #chat-messages {
+      flex: 1; overflow-y: auto; padding: 20px;
+      display: flex; flex-direction: column; gap: 12px;
+    }
+    .msg {
+      max-width: 85%; padding: 12px 16px; border-radius: 12px;
+      line-height: 1.6; font-size: 14px; white-space: pre-wrap;
+    }
+    .msg.user { background: #0b1f3a; color: white; align-self: flex-end; border-bottom-right-radius: 3px; }
+    .msg.assistant { background: #f0f3f8; color: #1a1a2e; align-self: flex-start; border-bottom-left-radius: 3px; }
+    .msg.thinking { background: #f0f3f8; color: #888; align-self: flex-start; font-style: italic; }
+    #chat-input-area { padding: 16px; border-top: 1px solid #e5e7eb; display: flex; gap: 10px; }
+    #chat-input {
+      flex: 1; padding: 12px 16px; border: 1.5px solid #d1d5db;
+      border-radius: 8px; font-size: 14px; font-family: inherit;
+      resize: none; outline: none;
+    }
+    #chat-input:focus { border-color: #1f3c88; }
+    #send-btn {
+      background: #0b1f3a; color: white; border: none;
+      border-radius: 8px; padding: 12px 18px; font-size: 20px; cursor: pointer;
+    }
+    #send-btn:hover { background: #1f3c88; }
+    #send-btn:disabled { background: #9ca3af; cursor: not-allowed; }
+    @media (max-width: 600px) {
+      .grid { grid-template-columns: 1fr; }
+      #chat-box { height: 95vh; width: 100%; border-radius: 0; }
     }
   </style>
-
 </head>
-
 <body>
 
 <header>
@@ -84,47 +82,29 @@
 </header>
 
 <div class="container">
-
   <div class="card">
     <h2>🧠 ¿Qué es el CIP?</h2>
-    <p>
-      El Centro de Inteligencia de Producto (CIP) El Centro de Inteligencia de Producto (CIP) es un sistema corporativo que integra, valida y estructura la información por producto, desde su creación hasta su comercialización.
-    </p>
+    <p>El Centro de Inteligencia de Producto (CIP) es un sistema corporativo que integra, valida y estructura la información por producto, desde su creación hasta su comercialización.</p>
   </div>
-
   <div class="grid">
     <div class="card">
       <h3>📦 Expediente Inteligente</h3>
       <p>Construcción y gestión centralizada de información del producto y documentos clave.</p>
     </div>
-
     <div class="card">
       <h3>📊 Catálogo Corporativo</h3>
-      <p>Repositorio centralizado que integra y estructura toda la información clave del producto, habilitando su consulta, análisis y uso transversal para la toma de decisiones..</p>
+      <p>Repositorio centralizado que integra y estructura toda la información clave del producto, habilitando su consulta, análisis y uso transversal para la toma de decisiones.</p>
     </div>
-
     <div class="card">
       <h3>📈 Product Analytics</h3>
       <p>Generación de métricas, dashboards e insights para toma de decisiones.</p>
     </div>
   </div>
-
   <div class="card center">
-  <h2>🤖 Agente de Inteligencia de Producto</h2>
-  <p>
-    Interactúa con el agente CIP para consultas, validaciones y generación de información de producto.
-  </p>
-
-  <a href="https://claude.ai" target="_blank">
-    <button class="btn">🚀 Abrir Agente CIP</button>
-  </a>
-
-  <a href="cip-agent.md" target="_blank">
-    <button class="btn">📄 Abrir Agente CIP (.MD)</button>
-  </a>
-
-</div>
-
+    <h2>🤖 Agente de Inteligencia de Producto</h2>
+    <p>Interactúa con el agente CIP para consultas, validaciones y generación de información de producto.</p>
+    <button class="btn" onclick="startChat()">🚀 Abrir Agente CIP</button>
+  </div>
   <div class="card">
     <h2>⚙️ Flujo del Sistema</h2>
     <ul>
@@ -135,8 +115,85 @@
       <li>Explotación analítica</li>
     </ul>
   </div>
-
 </div>
 
+<div id="chat-overlay">
+  <div id="chat-box">
+    <div id="chat-header">
+      <h3>🤖 Agente CIP — Centro de Inteligencia de Producto</h3>
+      <button id="chat-close" onclick="closeChat()">✕</button>
+    </div>
+    <div id="chat-messages"></div>
+    <div id="chat-input-area">
+      <textarea id="chat-input" rows="2" placeholder="Escribe tu mensaje..." onkeydown="handleKey(event)"></textarea>
+      <button id="send-btn" onclick="sendMessage()">➤</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  let conversationHistory = [];
+
+  function startChat() {
+    conversationHistory = [];
+    document.getElementById('chat-messages').innerHTML = '';
+    document.getElementById('chat-overlay').classList.add('active');
+    addMessage('assistant', '¡Bienvenido al Agente CIP — Centro de Inteligencia de Producto! 🚀\n\nEstoy aquí para guiarte paso a paso en el proceso de alta de productos al catálogo corporativo.\n\nPara comenzar, dime: ¿en qué país, marca y producto vamos a trabajar hoy?');
+  }
+
+  function closeChat() {
+    document.getElementById('chat-overlay').classList.remove('active');
+  }
+
+  function addMessage(role, text) {
+    const div = document.createElement('div');
+    div.className = `msg ${role}`;
+    div.textContent = text;
+    document.getElementById('chat-messages').appendChild(div);
+    document.getElementById('chat-messages').scrollTop = 9999;
+    return div;
+  }
+
+  function handleKey(e) {
+    if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendMessage(); }
+  }
+
+  async function sendMessage() {
+    const input = document.getElementById('chat-input');
+    const text = input.value.trim();
+    if (!text) return;
+
+    input.value = '';
+    addMessage('user', text);
+    conversationHistory.push({ role: 'user', content: text });
+
+    const btn = document.getElementById('send-btn');
+    btn.disabled = true;
+    const thinking = addMessage('thinking', 'El agente está procesando...');
+
+    try {
+      const response = await fetch('/api/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ messages: conversationHistory })
+      });
+      const data = await response.json();
+      thinking.remove();
+
+      if (data.error) {
+        addMessage('assistant', '❌ Error: ' + data.error);
+      } else {
+        conversationHistory.push({ role: 'assistant', content: data.reply });
+        addMessage('assistant', data.reply);
+      }
+    } catch (err) {
+      thinking.remove();
+      addMessage('assistant', '❌ Error de conexión. Intenta de nuevo.');
+    }
+
+    btn.disabled = false;
+    input.focus();
+  }
+</script>
 </body>
 </html>
