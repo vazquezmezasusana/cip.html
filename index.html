@@ -2,19 +2,30 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>CIP | Agente de Producto</title>
+  <title>CIP | Product Intelligence Center</title>
 
   <style>
     body {
-      font-family: 'Segoe UI', sans-serif;
       margin: 0;
+      font-family: 'Segoe UI', sans-serif;
       background: #f4f6f9;
     }
 
     header {
-      background: #0b1f3a;
+      background: linear-gradient(90deg, #0b1f3a, #1f3c88);
       color: white;
-      padding: 20px;
+      padding: 30px;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 28px;
+    }
+
+    header p {
+      margin-top: 10px;
+      opacity: 0.9;
     }
 
     .container {
@@ -24,77 +35,105 @@
     .card {
       background: white;
       padding: 25px;
-      border-radius: 10px;
-      margin-bottom: 20px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+      border-radius: 12px;
+      margin-bottom: 25px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
     }
 
-    h2 {
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .card h3 {
       margin-top: 0;
-      color: #0b1f3a;
     }
 
     .btn {
-      background: #1f3c88;
+      background: #0b1f3a;
       color: white;
-      padding: 12px 18px;
+      padding: 14px 22px;
       border: none;
-      border-radius: 6px;
+      border-radius: 8px;
+      font-size: 16px;
       cursor: pointer;
+      margin-top: 15px;
+    }
+
+    .btn:hover {
+      background: #1f3c88;
+    }
+
+    .center {
+      text-align: center;
+    }
+
+    ul {
+      line-height: 1.8;
     }
   </style>
+
 </head>
 
 <body>
 
 <header>
-  🤖 CIP | Agente de Inteligencia de Producto
+  <h1>🚀 CIP | Centro de Inteligencia de Producto</h1>
+  <p>Product Operating System para la gestión inteligente del portafolio</p>
 </header>
 
 <div class="container">
 
   <div class="card">
-    <h2>Rol del Sistema</h2>
+    <h2>🧠 ¿Qué es el CIP?</h2>
     <p>
-      Eres el Centro de Inteligencia de Producto. Actúas como auditor de datos y PMO,
-      asegurando la correcta integración de productos en el catálogo corporativo.
+      El Centro de Inteligencia de Producto (CIP) El Centro de Inteligencia de Producto (CIP) es un sistema corporativo que integra, valida y estructura la información por producto, desde su creación hasta su comercialización.
     </p>
   </div>
 
+  <div class="grid">
+    <div class="card">
+      <h3>📦 Expediente Inteligente</h3>
+      <p>Construcción y gestión centralizada de información del producto y documentos clave.</p>
+    </div>
+
+    <div class="card">
+      <h3>📊 Catálogo Corporativo</h3>
+      <p>Repositorio centralizado que integra y estructura toda la información clave del producto, habilitando su consulta, análisis y uso transversal para la toma de decisiones..</p>
+    </div>
+
+    <div class="card">
+      <h3>📈 Product Analytics</h3>
+      <p>Generación de métricas, dashboards e insights para toma de decisiones.</p>
+    </div>
+  </div>
+
+  <div class="card center">
+  <h2>🤖 Agente de Inteligencia de Producto</h2>
+  <p>
+    Interactúa con el agente CIP para consultas, validaciones y generación de información de producto.
+  </p>
+
+  <a href="https://claude.ai" target="_blank">
+    <button class="btn">🚀 Abrir Agente CIP</button>
+  </a>
+
+  <a href="cip-agent.md" target="_blank">
+    <button class="btn">📄 Abrir Agente CIP (.MD)</button>
+  </a>
+
+</div>
+
   <div class="card">
-    <h2>Objetivo</h2>
+    <h2>⚙️ Flujo del Sistema</h2>
     <ul>
-      <li>Validar cumplimiento de requisitos</li>
-      <li>Garantizar expediente completo</li>
-      <li>Habilitar generación de ProPstID</li>
+      <li>Ingreso de información de producto</li>
+      <li>Validación y estructuración automática</li>
+      <li>Generación de expediente único</li>
+      <li>Publicación en catálogo corporativo</li>
+      <li>Explotación analítica</li>
     </ul>
-  </div>
-
-  <div class="card">
-    <h2>Flujo del Proceso</h2>
-    <ol>
-      <li>Identificación</li>
-      <li>Definición de requisitos</li>
-      <li>Validación inteligente</li>
-      <li>Detección de errores</li>
-      <li>Validación SharePoint</li>
-      <li>Estatus final</li>
-    </ol>
-  </div>
-
-  <div class="card">
-    <h2>Modo de Operación</h2>
-    <p>
-      El agente avanza paso a paso, no permite errores críticos y asegura la calidad
-      de los datos antes de permitir el alta.
-    </p>
-  </div>
-
-  <div class="card">
-    <h2>Acceso al Agente</h2>
-    <a href="https://claude.ai" target="_blank">
-      <button class="btn">🚀 Abrir Agente en Claude</button>
-    </a>
   </div>
 
 </div>
